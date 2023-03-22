@@ -1,0 +1,38 @@
+<nav>
+    <div class="menu">
+        <a href="/">Главная</a>
+    </div>
+
+    <div class="menu">
+        <a href="news/create">Добавить книгу</a>
+    </div>
+
+        {% if user.is_authenticated %}
+
+            <div class="menu">
+                {% if user.userinformation.profile_image %}
+                <img src="{{ user.userinformation.profile_image.url }}" alt="{{ user }} avatar" width="25">
+            </div>
+
+        {% endif %}
+
+            <div class="menu">
+                <span>Имя пользователя: <a href="/profile/{{ user.id }}">{{ user }}</a></span>
+            </div>
+
+            <div class="menu">
+                <a href="/logout">Выйти</a>
+            </div>
+        
+        {% else %}
+
+            <div class="menu">
+                <a href="/register">Регистрация</a>
+            </div>
+
+            <div class="menu">
+                <a href="/login">Войти</a>
+            </div>
+            
+        {% endif %}
+</nav>

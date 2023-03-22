@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        {% if login %}
+        <input type="submit" value="Войти">
+        {% else %}
+        <input type="submit" value="Зарегистрироваться">
+        {% endif %}
+
+    </form>
+{% endblock %}
+
+<!-- {% if user.is_authenticated %}
+<a href="/logout">Выйти</a>
+{% else %}
+<a href="/register">Регистрация</a>
+<a href="/login">Войти</a>
+{% endif %} -->

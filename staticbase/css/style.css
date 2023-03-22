@@ -1,0 +1,68 @@
+html{
+  scroll-behavior: smooth;
+}
+
+body{
+  margin: 0px;
+  background-color:aliceblue;
+}
+
+/* navbar */
+
+nav {
+  height: 5vh;
+  padding: 1.45em;
+  background-color:teal;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+form {
+  margin-left:1em;
+  padding-bottom: 1em;
+}
+
+form label{
+  margin-bottom: 1em;
+}
+
+.menu a{
+  font-size:x-large;
+  font-family:Arial, Helvetica, sans-serif;
+  color:gainsboro;
+  text-decoration: none;
+  justify-content: space-between;
+}
+
+.menu{
+  display:inline-block;
+  gap: 10px;
+  padding-right: 50px;
+  transition: all ease .3s;
+}
+
+.menu:hover {
+  box-shadow: 4px, 4px, 0, 0 goldenrod;
+  transform: translate(-4px, -4px);
+}
+
+.creating:hover{
+  box-shadow: 4px, 4px, 0, 0 goldenrod;
+  transform: translate(-4px, -4px);
+}
+
+/* main */
+
+.book a{
+  font-size:large;
+  font-family:Arial, Helvetica, sans-serif;
+  color:royalblue;
+  text-decoration: none;
+  transition: all ease .3s;
+}
+
+.book{
+  display:inline;
+}
+
