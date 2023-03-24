@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from news.models import News, Comments, Likes
-from .forms import CommentaryModelForm, NewsModelForm, CommentaryModelForm
+from .forms import CommentaryModelForm, NewsModelForm, CommentaryModelForm, SearchForm
 from django.contrib.auth.decorators import login_required, permission_required
 from django.urls import reverse
 # Create your views here.
@@ -106,4 +106,8 @@ def likes_view(request, pk):
             obj.likes.filter(user=user).delete()
     return HttpResponseRedirect(reverse('detail-news', args=[pk]))
 
-
+def search_view(request):
+    if request.method == 'POST':
+        
+    else:
+        form = SearchForm()

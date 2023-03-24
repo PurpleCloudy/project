@@ -1,6 +1,6 @@
 from dataclasses import field
 from django import forms
-from .models import News, Comments
+from .models import News, Comments, TAGS
 
 # class NewsForm(forms.Form):
 #     article = forms.CharField()
@@ -30,3 +30,6 @@ class CommentaryModelForm(forms.ModelForm):
         fields = [
             'text'
         ]
+        
+class SearchForm(forms.Form):
+    searchinput = forms.ChoiceField(choices=TAGS, widget=forms.CheckboxSelectMultiple)
