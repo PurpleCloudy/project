@@ -33,3 +33,6 @@ class CommentaryModelForm(forms.ModelForm):
 
 class SearchForm(forms.Form):
     searchtag = forms.ChoiceField(choices=TAGS, widget=forms.CheckboxSelectMultiple, label="Фильтры")
+
+        
+

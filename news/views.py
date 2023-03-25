@@ -112,6 +112,3 @@ def likes_view(request, pk):
         else:
             obj.likes.filter(user=user).delete()
     return HttpResponseRedirect(reverse('detail-news', args=[pk]))
-
-
-
