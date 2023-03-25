@@ -1,14 +1,22 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from news.models import News, Comments, Likes
-from .forms import CommentaryModelForm, NewsModelForm, CommentaryModelForm
+from .forms import CommentaryModelForm, NewsModelForm, CommentaryModelForm, SearchForm
 from django.contrib.auth.decorators import login_required, permission_required
 from django.urls import reverse
 # Create your views here.
 
 def index(request, *args, **kwargs):
-    qs = News.objects.all()
-    context = {'news_list': qs }
+    if request.method == 'POST':
+        form = SearchForm(request.POST)
+        qs = News.objects.none()
+        for tg in request.POST.getlist('searchtag'):
+            qs = qs|News.objects.filter(tag=tg)
+        context = {'news_list': qs, 'form':form}
+    else:
+        form = SearchForm()
+        qs = News.objects.all()
+        context = {'news_list': qs, 'form':form}
     return render(request, 'index.html', context)
 
 def detail_view(request, pk):
@@ -25,7 +33,6 @@ def detail_view(request, pk):
 
 def test_view(request, *args, **kwargs):
     data = dict(request.GET)
-    print(data)
     obj = News.objects.get(id = data['pk'][0])
     return HttpResponse(f'<b>{obj.article}</b>')
 
@@ -105,5 +112,6 @@ def likes_view(request, pk):
         else:
             obj.likes.filter(user=user).delete()
     return HttpResponseRedirect(reverse('detail-news', args=[pk]))
+
 
 

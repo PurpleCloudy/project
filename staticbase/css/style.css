@@ -63,6 +63,20 @@ form label{
 }
 
 .book{
-  display:inline;
+  padding: 30px;
+}
+
+.filter{
+  padding: 30px;
+  background-color: lightseagreen;
+  font-size:large;
+  font-family:Arial, Helvetica, sans-serif;
+  color:gainsboro;
+}
+
+.filter input{
+  font-size:medium;
+  font-family:Arial, Helvetica, sans-serif;
+  color:black;
 }
 

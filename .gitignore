@@ -4,6 +4,6 @@ first_app/dev.py
 *.bak
 
 #Database
-*.sqlite3
+**sqlite3
 
-../env
+**env

@@ -36,7 +36,7 @@ class News(models.Model):
     likes = models.ManyToManyField(Likes)
     image = models.ImageField(verbose_name="Обложка", upload_to = 'news_images/', default = 'news_images/default_news.jpg')
     image_thumbnail = models.ImageField(upload_to = 'news_images/', null = True, blank = True)
-    tags = models.CharField(verbose_name='теги', choices=TAGS, max_length=3, default='STU')
+    tag = models.CharField(verbose_name='тег', choices=TAGS, max_length=3, default='STU')
 
     def __str__(self):
         return self.article

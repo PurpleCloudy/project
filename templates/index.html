@@ -4,6 +4,13 @@
 
 {% block content %}
 <div class="central">
+    <div class="filter">
+        <form action="" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Фильтровать">
+        </form>
+    </div>
         <div class="book">
             {% for news in news_list %}
                 {% if news.image_thumbnail %}
