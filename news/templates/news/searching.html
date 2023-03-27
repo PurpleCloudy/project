@@ -1,18 +1,38 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
-Комментировать - {{ single_object.article }}
+    Поиск
 {% endblock %}
 
 {% block content %}
 
-    <form action="" method="post">
-        {% csrf_token %}
+<form action="" method="post">
+    {% if obj %}
+        <!-- <div class="bookpage">
+            Автор записи: {{obj.author}}
+        </div>
+        <div class="bookpage">
+            Автор книги: {{obj.author_book}}
+        </div>
+        <div class="bookpage">
+            <img src="{% static obj.image.url %}" height="400">
+        </div> -->
+        <div class="book">
+            {% if obj.image_thumbnail %}
+                <img src = "{{ obj.image_thumbnail.url }}" alt = "{{ obj.article }}thumbnail">
+            {% endif %}
+                <a href="http://127.0.0.1:8000/news/{{ obj.id }}">{{ obj.article }}</a>
+        </div> 
+    {% else %}
+        <h3>Пока что ничего не найдено...</h3>
+    {% endif %}
 
-        {{ form.as_p }}
+    {% csrf_token %}
 
-        <input type="submit" value="Поиск">
+    {{ form_search.as_p }}
 
-    </form>
+    <input type="submit" value="Искать">
+</form>
 
 {% endblock %}

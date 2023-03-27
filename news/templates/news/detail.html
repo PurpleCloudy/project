@@ -1,6 +1,4 @@
 {% extends "base.html" %}
-
-
 {% load static %}
 
 {% block title %}
@@ -11,62 +9,68 @@
 
 <div>
     <div class="bookpage">
-    <h5> Автор записи: {{ single_object.author }} </h5>
+        <h5> Автор записи: {{ single_object.author }} </h5>
     </div>
+
     <div class="bookpage">
-    <h1>{{ single_object.article }}</h1>
+        <h5> Автор книги: {{ single_object.author_book }} </h5>
     </div>
+
+    <div class="bookpage">
+        <h1>{{ single_object.article }}</h1>
+    </div>
+
     {% if single_object.image %}
-    <div class="bookpage">
-    <img src="{% static single_object.image.url %}" alt="{{ single_object.article }}" height="400">
-    </div>
+        <div class="bookpage">
+            <img src="{% static single_object.image.url %}" alt="{{ single_object.article }}" height="400">
+        </div>
     {% endif %}
 
     <div class="bookpage">
-    {% include 'news/detail_snippet.html' with single_object=single_object %}
+        {% include 'news/detail_snippet.html' with single_object=single_object %}
     </div>
 
     <div class="bookpage">
-    <a href="/news/commentary/{{single_object.pk}}">Комментировать</a>
+        <a href="/news/commentary/{{single_object.pk}}">Комментировать</a>
     </div>
 
     <div class="bookpage">
-    <h5>Комментарии</h5>
+        <h5>Комментарии</h5>
     </div>
 
     <div class="bookpage">
-    {% for c in single_object.commentary.all %}
-        <p>
-            {% if user.userinformation.profile_image %}
-                <img src="{{ user.userinformation.profile_image.url }}" alt="{{ user }} avatar" width="25">
-            {% endif %}
-            {{ c.date.time }}
-            {{ c.user }}
-            {{ c.text }}
-        </p>
-    {% endfor %}
+        {% for c in single_object.commentary.all %}
+            <p>
+                {% if user.userinformation.profile_image %}
+                    <img src="{{ user.userinformation.profile_image.url }}" alt="{{ user }} avatar" width="25">
+                {% endif %}
+                {{ c.date.time }}
+                {{ c.user }}
+                {{ c.text }}
+            </p>
+        {% endfor %}
     </div>
 
     <div class="bookpage">
-    <h5>Лайки: {{ single_object.get_likes }}</h5>
+        <h5>Лайки: {{ single_object.get_likes }}</h5>
     </div>
 
     <div class="bookpage">
         <form action="/news/like/{{single_object.pk}}/" method ="post">
             {% csrf_token %}
             {% if not liked %}
-            <input type="submit" value="Лайк">
+                <input type="submit" value="Лайк">
             {% else %}
-            <input type="submit" value="Дизлайк">
+                <input type="submit" value="Дизлайк">
             {% endif %}
         </form>
     </div>
 
     <div class="bookpage">
-    {% if perms.user.is_staff %}
-        <a href="/news/edit/{{ single_object.pk }}"> Изменить </a>
-        <a href="/news/delete/{{ single_object.pk }}"> Удалить </a>
-    {% endif %}
+        {% if perms.user.is_staff %}
+            <a href="/news/edit/{{ single_object.pk }}"> Изменить </a>
+            <a href="/news/delete/{{ single_object.pk }}"> Удалить </a>
+        {% endif %}
     </div>
 
 </div>

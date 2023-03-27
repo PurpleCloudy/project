@@ -1,24 +1,35 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from news.models import News, Comments, Likes
-from .forms import CommentaryModelForm, NewsModelForm, CommentaryModelForm, SearchForm
+from .forms import CommentaryModelForm, NewsModelForm, CommentaryModelForm, FilterForm, SearchForm
 from django.contrib.auth.decorators import login_required, permission_required
 from django.urls import reverse
+from django.views.generic.list import ListView
 # Create your views here.
 
-def index(request, *args, **kwargs):
+def index(request):
     if request.method == 'POST':
-        form = SearchForm(request.POST)
+        form = FilterForm(request.POST)
         qs = News.objects.none()
         for tg in request.POST.getlist('searchtag'):
             qs = qs|News.objects.filter(tag=tg)
         context = {'news_list': qs, 'form':form}
-        print(context)
     else:
-        form = SearchForm()
+        form = FilterForm()
         qs = News.objects.all()
         context = {'news_list': qs, 'form':form}
     return render(request, 'index.html', context)
+
+
+def get_all(request):
+    if request.method == 'POST':
+        form = SearchForm(request.POST)
+        qs = News.objects.filter(article__icontains=request.POST['searchinput']).get()
+        print(dir(qs))
+    else:
+        form = SearchForm()
+        qs=News.objects.none()
+    return render(request, 'news/searching.html', {'form_search':form, 'obj':qs})
 
 def detail_view(request, pk):
     user=request.user

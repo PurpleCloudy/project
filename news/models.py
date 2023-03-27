@@ -30,6 +30,7 @@ class Likes(models.Model):
 
 class News(models.Model):
     author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+    author_book = models.CharField(verbose_name="Имя автора",max_length=100, default='Не указан')
     article = models.CharField(verbose_name="Название книги",max_length=100)
     body = models.TextField(verbose_name="Описание", blank = True, null = True)
     commentary = models.ManyToManyField(Comments)

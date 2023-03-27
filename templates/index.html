@@ -5,10 +5,13 @@
 {% block content %}
 <div class="central">
     <div class="filter">
-        <form action="" method="post">
+        <form class="column" action="" method="post">
             {% csrf_token %}
             {{form.as_p}}
             <input type="submit" value="Фильтровать">
+        </form>
+        <form class="column" action="searching/" method="get">
+            <a href="searching">Поиск</a>
         </form>
     </div>
         {% for news in news_list %}

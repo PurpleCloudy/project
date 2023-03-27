@@ -2,9 +2,11 @@ from dataclasses import field
 from django import forms
 from .models import News, Comments, TAGS
 
-# class NewsForm(forms.Form):
-#     article = forms.CharField()
-#     body = forms.CharField(widget=forms.Textarea)
+FIELDS_SEARCH = [
+    ('ART','article'),
+    ('AUB','author_book'),
+    ('AUT', 'author'),
+]
 
 class NewsModelForm(forms.ModelForm):
     class Meta:
@@ -31,8 +33,8 @@ class CommentaryModelForm(forms.ModelForm):
             'text'
         ]
 
-class SearchForm(forms.Form):
+class FilterForm(forms.Form):
     searchtag = forms.MultipleChoiceField(choices=TAGS, widget=forms.CheckboxSelectMultiple, label="Фильтры")
 
-        
-
+class SearchForm(forms.Form):
+    searchinput = forms.CharField(max_length=100, label='Введите название')

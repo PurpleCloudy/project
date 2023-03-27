@@ -20,7 +20,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from news.views import index, detail_view, create_view, edit_view, delete_view, commentary_view, likes_view
+from news.views import index, detail_view, create_view, edit_view, delete_view, commentary_view, likes_view, get_all
 from profiles.views import logout_view, login_view, register_view, detail_user_view
 
 urlpatterns = [
@@ -36,4 +36,5 @@ urlpatterns = [
     path('news/commentary/<int:pk>', commentary_view),
     path('news/like/<int:pk>/', likes_view),
     path('profile/<int:pk>/', detail_user_view, name = 'profile'),
+    path('searching/', get_all, name='searching')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
