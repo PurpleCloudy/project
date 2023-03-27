@@ -64,6 +64,10 @@ form label{
 
 .book{
   padding: 30px;
+  display: grid;
+  /* grid-template-columns: repeat(4, 100px);
+  justify-content: space-between;
+  text-align: center; */
 }
 
 .filter{
@@ -80,3 +84,21 @@ form label{
   color:black;
 }
 
+.bookpage{
+  margin-left:15px;
+  padding-bottom: 15px;
+}
+
+.bookpage a{
+  font-size:small;
+  font-family:Arial, Helvetica, sans-serif;
+  color:royalblue;
+  text-decoration: none;
+  transition: all ease .3s;
+}
+
+/* profiles */
+
+.profile {
+  margin-left:15px;
+}

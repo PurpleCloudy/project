@@ -11,15 +11,14 @@
             <input type="submit" value="Фильтровать">
         </form>
     </div>
-        <div class="book">
-            {% for news in news_list %}
+        {% for news in news_list %}
+            <div class="book">
                 {% if news.image_thumbnail %}
                     <img src = "{{ news.image_thumbnail.url }}" alt = "{{ news.article }}thumbnail">
                 {% endif %}
                     <a href="news/{{ news.id }}">{{ news.article }}</a>
-        </div> 
+            </div> 
     </div>
-
 </div>
 {% endfor %}
 {% endblock %}

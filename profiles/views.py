@@ -44,6 +44,7 @@ def detail_user_view(request, pk):
             obj = form.save(commit=False)
             obj.profile = user
             obj.save()
+            form = ProfileModelForm()
     else:
         form = ProfileModelForm()
     return render(request, 'profiles/detail.html', {'profile':user, 'form':form})

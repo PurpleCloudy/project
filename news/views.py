@@ -13,6 +13,7 @@ def index(request, *args, **kwargs):
         for tg in request.POST.getlist('searchtag'):
             qs = qs|News.objects.filter(tag=tg)
         context = {'news_list': qs, 'form':form}
+        print(context)
     else:
         form = SearchForm()
         qs = News.objects.all()
