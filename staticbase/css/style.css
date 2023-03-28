@@ -115,6 +115,9 @@ form label{
   transition: all ease .3s;
 }
 
+.forms{
+  color:darkgreen;
+}
 /* profiles */
 
 .profile {

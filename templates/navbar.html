@@ -3,9 +3,11 @@
         <a href="/">Главная</a>
     </div>
 
-    <div class="menu">
-        <a href="news/create">Добавить книгу</a>
-    </div>
+        {% if user.is_staff %}
+            <div class="menu">
+                <a href="news/create">Добавить книгу</a>
+            </div>
+        {% endif %}
 
         {% if user.is_authenticated %}
 

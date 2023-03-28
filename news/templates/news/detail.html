@@ -20,6 +20,14 @@
         <h1>{{ single_object.article }}</h1>
     </div>
 
+    <div class="bookpage">
+        <h3>Качество книги: {{single_object.quality}}</h3>
+    </div>
+
+    <div class="bookpage">
+        <h3>Наличие книги: {{single_object.is_in}}</h3>
+    </div>
+
     {% if single_object.image %}
         <div class="bookpage">
             <img src="{% static single_object.image.url %}" alt="{{ single_object.article }}" height="400">

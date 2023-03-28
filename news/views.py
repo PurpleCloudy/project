@@ -38,6 +38,22 @@ def detail_view(request, pk):
         obj = News.objects.get(id=pk)
     except:
         raise Http404
+    
+    if obj.is_in == 'yes':
+        obj.is_in = 'есть в библиотеке'
+    else:
+        obj.is_in = 'нет в библиотеке'
+
+    if obj.quality == 'VBA':
+        obj.quality = 'книга испорчена'
+    if obj.quality == 'BAD':
+        obj.quality = 'ветхая, будьте осторожны'
+    if obj.quality == 'NOR':
+        obj.quality = 'неплохая, но уже не новая'
+    if obj.quality == 'ANE':
+        obj.quality = 'почти новая'
+    if obj.quality == 'NEW':
+        obj.quality = 'новая'
 
     if request.user.is_authenticated and obj.likes.filter(user=user):
         liked = True

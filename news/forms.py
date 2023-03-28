@@ -12,12 +12,16 @@ class NewsModelForm(forms.ModelForm):
     class Meta:
         model = News
         fields = ['article',
+                  'author_book',
                   'body',
                   'image',
                   'tag',
+                  'quality',
+                  'is_in'
                 ]
         widgets = {
-            'tag':forms.Select()
+            'tag':forms.Select(),
+            'quality':forms.Select()
         }
     
     def clean_article(self):

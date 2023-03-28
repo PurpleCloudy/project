@@ -9,12 +9,25 @@ from io import BytesIO
 # Create your models here.
 User = settings.AUTH_USER_MODEL
 
+ANSWERS = [
+    ('yes', 'есть в библиотеке'),
+    ('no', 'нет в библиотеке')
+]
+
 TAGS = [
     ('FAN','фэнтези'),
     ('STU','учебники'),
     ('FIC','научная фантастика'),
     ('SCI','научная литература'),
     ('DIC','словари, справочники и тд'),
+]
+
+QUALITY = [
+    ('VBA','книга испорчена'),
+    ('BAD','ветхая, будьте осторожны'),
+    ('NOR','неплохая, но уже не новая'),
+    ('ANE','почти новая'),
+    ('NEW','новая'),
 ]
 
 class Comments(models.Model):
@@ -37,7 +50,9 @@ class News(models.Model):
     likes = models.ManyToManyField(Likes)
     image = models.ImageField(verbose_name="Обложка", upload_to = 'news_images/', default = 'news_images/default_news.jpg')
     image_thumbnail = models.ImageField(upload_to = 'news_images/', null = True, blank = True)
-    tag = models.CharField(verbose_name='тег', choices=TAGS, max_length=3, default='STU')
+    tag = models.CharField(verbose_name='Тег', choices=TAGS, max_length=3, default='STU')
+    quality = models.CharField(verbose_name='Качество книги', choices=QUALITY, max_length=3, default='NOR')
+    is_in = models.CharField(verbose_name='Наличие книги', choices=ANSWERS, max_length=30, default='yes')
 
     def __str__(self):
         return self.article
