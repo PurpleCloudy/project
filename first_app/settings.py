@@ -85,14 +85,14 @@ DATABASES = {
 
 DEVELOPMENT = True
 
-if not DEVELOPMENT:
-    from .prod import DEBUG, ALLOWED_HOSTS
-    import dj_database_url
-    db_from_env = dj_database_url.config(conn_max_age=500)
-    DATABASES['default'].update(db_from_env)
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-else:
-    from .dev import DEBUG, ALLOWED_HOSTS
+# if not DEVELOPMENT:
+#     from .prod import DEBUG, ALLOWED_HOSTS
+#     import dj_database_url
+#     db_from_env = dj_database_url.config(conn_max_age=500)
+#     DATABASES['default'].update(db_from_env)
+#     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# else:
+#     from .dev import DEBUG, ALLOWED_HOSTS
 
 
 # Password validation

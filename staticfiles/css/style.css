@@ -1,12 +1,125 @@
-body {
-    margin:0;
-    padding:0;
+html{
+  scroll-behavior: smooth;
 }
 
+body{
+  margin: 0px;
+  background-color:aliceblue;
+}
+
+/* navbar */
+
 nav {
-    padding: 1.45em;
-    background-color:red;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+  height: 5vh;
+  padding: 1.45em;
+  background-color:teal;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+form {
+  margin-left:1em;
+  padding-bottom: 1em;
+}
+
+form label{
+  margin-bottom: 1em;
+}
+
+.menu a{
+  font-size:x-large;
+  font-family:Arial, Helvetica, sans-serif;
+  color:gainsboro;
+  text-decoration: none;
+  justify-content: space-between;
+}
+
+.menu{
+  display:inline-block;
+  gap: 10px;
+  padding-right: 50px;
+  transition: all ease .3s;
+}
+
+.menu:hover {
+  box-shadow: 4px, 4px, 0, 0 goldenrod;
+  transform: translate(-4px, -4px);
+}
+
+.creating:hover{
+  box-shadow: 4px, 4px, 0, 0 goldenrod;
+  transform: translate(-4px, -4px);
+}
+
+/* main */
+
+.book a{
+  font-size:large;
+  font-family:Arial, Helvetica, sans-serif;
+  color:royalblue;
+  text-decoration: none;
+  transition: all ease .3s;
+}
+
+.book{
+  padding: 30px;
+  display: grid;
+  /* grid-template-columns: repeat(4, 100px);
+  justify-content: space-between;
+  text-align: center; */
+}
+
+.filter{
+  display: grid;
+  padding: 30px;
+  background-color: lightseagreen;
+  font-size:large;
+  font-family:Arial, Helvetica, sans-serif;
+  color:gainsboro;
+}
+
+.filter input{
+  font-size:medium;
+  font-family:Arial, Helvetica, sans-serif;
+  color:black;
+}
+
+.filter {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+}
+
+.bookpage{
+  margin-left:15px;
+  /* padding-bottom: 3px; */
+}
+
+.bookpage a{
+  font-size:small;
+  font-family:Arial, Helvetica, sans-serif;
+  color:royalblue;
+  text-decoration: none;
+  transition: all ease .3s;
+}
+
+.column a{
+  border-bottom: 2px solid royalblue;
+  font-size:medium;
+  font-family:Arial, Helvetica, sans-serif;
+  color:aliceblue;
+  text-decoration: none;
+  transition: all ease .3s;
+}
+
+.forms{
+  color:darkgreen;
+}
+/* profiles */
+
+.profile {
+  margin-left:15px;
 }
